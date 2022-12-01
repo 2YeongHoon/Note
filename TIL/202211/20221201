@@ -1,0 +1,10 @@
+List, Map
+
+실무에서 필요한경우
+
+- 유저가 스스로 할인 정책을 선택하거나 할때 빈 목록을 불러와서 get으로 찾아서 넣어줌
+- 동적으로 다형성 코드를 유지하면서 값을 넣어줄 수 있음
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ab998ca0-a86c-4052-acad-f6884256b3e9/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c2b409ef-6c01-4d2d-9482-c2fe998cdf0b/Untitled.png)

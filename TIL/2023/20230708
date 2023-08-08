@@ -1,0 +1,19 @@
+- OPEN SESSION IN VIEW 하이버네이트
+- OPEN ENTITYMANAGER IN VIEW JPA
+    - 관례상 OSIV라고함
+    
+    - OSIV ON (기본적으로 **OSIV 활성화 )**
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bea96a13-6f27-444b-ac66-8a0fae6618d0/Untitled.png)
+    
+    - DB 커넥션 획득 시점 ( 트랜잭션 시작 시, 서비스 로직 에서)
+    - DB 커넥션 반환 시점 ( MVC의경우 화면에서 렌더링 될때까지, API의경우 응답객체 반활할때까지 커넥션, 영속성 컨텍스트를 유지함  )
+    - 장점
+        - 
+    - 단점
+        - 너무 오랫동안 커넥션을 가지고 있어서 트레픽이 많아지면 성능이 떨어질 수 있음
+    - 해결법
+        - 
+    
+    - 
+    - OSIV OFF

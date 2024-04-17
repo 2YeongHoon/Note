@@ -1,0 +1,4 @@
+인터페이스가 존재한다면, jdk, cglib 둘다 사용해서 프록시를 만들어주는 것이 가능.
+ProxyFactory의 proxyTargetClass옵션을 사용하면 쉽게 가능.
+- false면 jdk, true면 cglib
+하지만 jdk동적프록시는 구체클래스로 타입케스팅이 불가능 함.ClassCastException.class 예외가 발생한다.

@@ -1,0 +1,12 @@
+item8 finalizer와 cleaner 사용을 피하라
+    
+finalizer는 자바 8 이전에 사용되던 객체 소멸자 
+cleaner는 자바 9 이후에 등장한 객체 소멸자
+    
+자바 언어 명세에서는 finalizer나 cleaner의 수행시점이나 수행여부를 보장해주지 않는다.
+대안은 AutoCloseable 구현해주고, 클라이언트에서 인스턴스를 다 쓰고나면 close호출
+또는 try-with-resources 사용(권장)
+
+그럼 finalizer, cleaner는 언제사용?
+- 안전망 역할, 중요하지 않은 네이티브 자원 회수.
+- 하지만 그 조차도 불확실성이 존재하고, 성능 저하가 발생할 수 있음.

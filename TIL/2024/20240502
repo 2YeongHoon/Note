@@ -1,0 +1,15 @@
+item9 try-finally 대신 try-with-resources를 사용하라
+    
+자바 라이브러리에는 close 메서드를 호출해 직접 닫아줘야 하는 자원들이 많다.
+ex)InputSteam, OutputStream, java.sql.Connection
+    
+try-finally를 주로 사용했었는데 단점이 명확   
+  1. 자원이 둘 이상이면 지저분에진다.
+  2. 예외는 finally 블록에서도 발생할 수 있다.
+  3. try, finally에서 모두 예외가 발생할 경우 두번째 예외가 첫번째 예외를 삼킴
+    
+try-with-resources
+AutoCloseable 인터페이스 구현이 필수
+  1. 자원 회수를 하는 로직이 간결해진다.
+  2. 복수의 자원처리도 매우 간결해진다.
+  3. close에서 발생한 예외는 숨겨지고 첫 번째 예외가 기록 슘겨진 기록도 suppressed로 출력

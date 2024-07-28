@@ -1,0 +1,13 @@
+Item35. Ordinal 메서드 대신 인스턴스 필드를 사용하라
+
+ordinal 메서드를 사용하면 안 되는 이유
+ - 상수 선언 위치를 바꾸면 오작동이되고 이미 점유중인 상수는 사용 불가.
+
+해결책
+- 열거 타입 상수에 연결된 값을 인스턴스 필드에 저장해서 사용하면 된다.
+```
+public enum Ensemble {
+    SOLO(1), DUET(2), TRIO(3), QUARTET(4), QUINTET(5),
+    SEXTET(6), SEPTET(7), OCTET(8), DOUBLE_QUARTET(8), NONET(9), DECTET(10);
+}
+```

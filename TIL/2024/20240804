@@ -1,0 +1,49 @@
+Item38 확장할 수 있는 열거 타입이 필요하면 인터페이스를 사용하라
+
+abstract를 활용한 enum 전략 패턴 문제점
+ - 보통 인터페이스를 이용한 확장은 Enum을 활용한 전략 패턴에서 유용하다. 
+ - 전략 패턴이란 API와 구현 알고리즘을 분리한 패턴으로 생성자 주입이나 직접 참조를 이용해 클래스를 하나의 구현 전략으로 사용한다.
+
+열거 타입 자체는 확장할 수 없지만, 인터페이스와 그 인터페이스를 구현하는 기본 열거 타입을 함께 사용해 같은 효과를 낼 수 있다.
+이렇게 하면 클라이언트는 이 인터페이스를 구현해 자신만의 열거 타입(혹은 다른 타입)을 만들 수 있다.
+그리고 API가 (기본 열거 타입을 직접 명시하지 않고) 인터페이스 기반으로 작성되었다면 기본 열거 타입의 인스턴스가 쓰이는 모든 곳을 새로 확장한 열거 타입의 인스턴스로 대체해 사용할 수 있다.
+
+예시
+enum BasicOperation implements Operation {
+
+    PLUS("+") {
+        @Override
+        public double apply(double a, double b) {
+            return a + b;
+        }
+    },
+    MINUS("-") {
+        @Override
+        public double apply(double a, double b) {
+            return a - b;
+        }
+    },
+    TIMES("*") {
+        @Override
+        public double apply(double a, double b) {
+            return a * b;
+        }
+    },
+    DIVIDE("/") {
+        @Override
+        public double apply(double a, double b) {
+            return a / b;
+        }
+    };
+
+    private final String symbol;
+
+    BasicOperation(String symbol) {
+        this.symbol = symbol;
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
+    }
+}

@@ -1,1 +1,47 @@
 Item42. 익명 클래스보다는 람다를 사용하라
+
+public enum Operation {
+    PLUS("+")    {public double apply(double x, double y){return x + y;}},
+    MINUS("-")   {public double apply(double x, double y){return x - y;}},
+    TIMES("*")   {public double apply(double x, double y){return x * y;}},
+    DIVIDE("/")  {public double apply(double x, double y){return x / y;}};
+
+    private final String symbol;
+
+    Operation(String symbol) {
+        this.symbol = symbol;
+    }
+    @Override public String toString() {
+        return symbol;
+    }
+    public abstract double apply(double x, double y);
+}
+
+람다사용
+public enum Operation {
+    PLUS("+", (x, y) -> x + y),
+    MINUS("-", (x, y) -> x - y),
+    TIMES("*", (x, y) -> x * y),
+    DIVIDE("/", (x, y) -> x / y);
+
+    private final String symbol;
+    private final DoubleBinaryOperator op;
+    Operation(String symbol, DoubleBinaryOperator op) {
+        this.symbol = symbol;
+        this.op = op;
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
+    }
+
+    public double apply(double x, double y){
+        return op.applyAsDouble(x, y);
+    };
+}
+
+람다 주의점
+ - 코드 수가 많아지면 람다가 오히려 가독성이 떨어짐
+ - 람다의 this 키워드는 바깥을 가리키므로 주의 (자기 자신을 참조해야 한다면 익명 클래스 사용)\
+ - 람다는 가상머신별로 직렬화 형태가 다를 수 있기때문에 주의

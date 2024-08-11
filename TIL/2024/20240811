@@ -1,0 +1,14 @@
+Item43. 람다보다는 메서드 참조를 사용하라
+
+메서드 참조는 람다보다 더 간결하게 구현가능.
+//정적 메서드 참조
+map.merge(key,1,Integer::sum);
+
+
+메서드 참조를 사용하면 대부분 코드가 간결해지고 명확해지지만, 
+그렇지 않은 경우도 있다. 람다에서 사용하는 매개변수 이름이 좋은 가이드가 된다면 코드의 길이가 더 길어도 메서드 참조보다 읽기 쉽고 유지보수도 쉬울 수 있다.
+// 메서드 참조
+service.execute(GoshThisClassNameIsHumongous::action);
+
+// 람다
+service.execute(() -> action());

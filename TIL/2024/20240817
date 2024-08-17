@@ -1,0 +1,17 @@
+Item46. 스트림에서는 부작용 없는 함수를 사용하라
+
+정리
+ - 스트림 파이프라인 프로그래밍의 핵심은 부작용 없는 함수 객체에 있다. 스트림뿐만 아니라 스트림 관련 객체에 건네지는 모든 함수 객체가 부작용이 없어야 한다.
+ - 종단 연산 중 forEach는 스트림이 수행한 계산 결과를 보고할 때만 이용해야 한다. 계산 자체에는 이용하지 말자.
+ - 스트림을 올바로 사용하려면 수집기를 잘 알아둬야 한다. 가장 중요한 수집기 팩터리는 toList, toSet, toMap, groupingBy, joining이다.
+ 
+'''
+Map<Stirng, Long> freq = new HashMap<>();
+try (Stream<String> words = new Scanner(file).token()) 
+{    
+words.forEach(wrod -> {        
+freq.merge(word.toLowerCase(), 1L, Long::sum);    
+});
+}
+
+'''

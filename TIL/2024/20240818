@@ -8,3 +8,4 @@ Item47. 반환 타입으로는 스트림보다 컬렉션이 낫다.
  - 가장 큰 장점이자 단점이 지연 평가가 된다는 것이다.
  
 지연평가(Lazy Evaluation)
+https://dororongju.tistory.com/137

@@ -1,0 +1,48 @@
+Item50. 적시에 방어적 복사본을 만들라
+
+외부에서 내부를 수정할 수 있는 경우
+보통 객체의 허락 없이는 외부에서 내부를 수정하는 일은 불가능하다. 
+하지만 의도치 않게 외부에서 내부를 수정하도록 허락하는 상황이 생길 수 있다.
+
+'''
+public final class Period {
+    private final Date start;
+    private final Date end;
+
+    // 수정한 생성자 - 매개변수의 방어적 복사본을 만든다.
+    public Period(Date start, Date end) {
+        this.start = new Date(start.getTime());
+        this.end = new Date(end.getTime());
+
+        if (start.compareTo(end) > 0)
+            throw new IllegalArgumentException(
+                start + "가" + end + "보다 늦다.");
+    }
+ 
+    public Date start() {
+        return start;
+    }
+    public Date end() {
+        return end;
+    }
+}
+'''
+
+Perirod 접근자(getter)를 이용해 내부를 공격
+'''
+// Period 인스턴스의 내부를 공격하는 두 번째 방법
+Date start = new Date();
+Date end = new Date();
+Period p = new Period(start, end);
+p.end().setYear(78); // getter 메서드를 이용해 값을 변경한다.
+'''
+
+'''
+    // 수정한 접근자 - 가변 필드의 방어적 복사본을 만든다.
+    public Date start() {
+        return new Date(start.getTime());
+    }
+    public Date end() {
+        return new Date(end.getTime());
+    }
+'''

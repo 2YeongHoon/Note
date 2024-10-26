@@ -1,0 +1,3 @@
+Item58. for문보단 foreach를
+
+foreach 문은 전통적인 for loop와 비교했을 때 성능차이가 없고 가독성에 유리.

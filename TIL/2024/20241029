@@ -1,0 +1,5 @@
+Item60. 정확한 답이 필요하다면 float와 double은 피하라
+
+정확한 답이 필요한 계산이라면 float나 double을 피하고 BigDecimal, int, long을 사용하자.
+코딩시 불편함이나 성능저하가 중요하지 않다면 BigDecimal을 사용하자.
+성능이 중요하고 숫자가 너무 크지 않다면 int나 long을 사용하자.

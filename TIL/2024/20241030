@@ -1,0 +1,11 @@
+Item61 박싱된 기본 타입보다는 기본 타입을 사용하라
+
+기본 타입 (Primitive Type)
+int, long,short ,double ,char ,boolean
+참조 타입 (Reference Type)
+String, Integer, Long, Double, Boolean
+
+박싱타입 지양 이유
+1. 같은 객체를 비교하는게 아니라면 박싱된 기본 타입에 == 연산자를 사용하면 의도하지 않은 결과 도출.
+2. 기본 타입과 박싱된 기본 타입을 혼용한 연산에서는 박싱된 기본 타입의 박싱이 자동으로 풀려, NullPointerException
+3. 지역변수를 지역타입으로 설정하여 반복할경우 박싱과 언박싱이 반복되어 성능에 영향

@@ -1,0 +1,12 @@
+Item62 다른 타입이 적절한곳에 String을 피하라.
+
+String은 aggregate type을 표현하기 에는 부적절
+```
+String compoundKey = className + "#" + i.next()
+```
+
+꺼내쓸때 pasing 해야함.
+대체 방법
+1. boolean 사용
+2. 열거타입 사용
+3. 신규 클래스생성

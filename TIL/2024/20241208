@@ -1,0 +1,22 @@
+Item74. 메서드가 던지는 모든 예외를 문서화해라
+
+검사 예외는 항상 따로따로 선언하고, 각 예외가 발생하는 상황을 JavaDoc의 @throws 태그를 활용하여 정확히 문서화하라.
+
+```
+   /**
+     *
+     * @return secondField
+     * @throws NullPointerException if parameter is null or empty 비검사예외
+     * @throws IllegalAccessError if someone access 검사예외
+     */
+    public int getSecondField() throws IllegalAccessError {
+        return secondField;
+    }
+```
+
+- Exception이나 Throwable 같은 공통 상위 클래스가 아니라 구체적인 예외 클래스로 남겨놓을것
+- 각 예외에 대처할 힌트도 못 줄뿐더러 다른 예외들까지 포함시켜버려 API 사용성을 떨어뜨린다.
+- 단, main 함수는 JVM만이 호출하므로 Exception을 던져도 괜찮다.
+- public 메서드에 대해서는 비검사 예외도 문서화 하는 것이 좋다. 자신이 일어난 예외상황을 무엇인지 설명해주면 프로그래머가 해당 오류가 나지 않도록 코드를 고칠수 있다.
+- 문서화가 항상 가능한 것은 아니다. (메서드에서 참조한 외부 라이브러리의 클래스에서 새로운 비검사 예외를 던지게 된 경우)
+- 같은 클래스에서 정의된 메서드들이 같은 이유로 같은 예외를 던진다면 메서드 단위 예외가 아니라 클래스 설명에 추가하는 것도 한 방법.(NullPointerException)

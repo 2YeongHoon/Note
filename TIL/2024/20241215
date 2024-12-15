@@ -1,0 +1,13 @@
+Item77. 예외를 무시하지 말라
+
+catch 블록을 비워두면 try-catch를 사용하는 이유가 없다.
+하지만 가끔 무시해도 되는 경우도 있다. FileInputStream을 닫을때가 그렇다.
+예외를 무시하기로 헀다면 catch 블록 안에 그렇게 결정한 이유를 주석으로 남기고 예외변수 이름도 ignored로 바꾸자.
+
+```
+try {
+    numColors = f.get(1L, TimeUnit.SECONDS);
+} catch (TimeoutException | ExecutionException ignored){
+    //기본값을 사용한다(색상 수를 최소화하면 좋지만, 필수는 아니다.)
+}
+```

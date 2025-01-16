@@ -1,0 +1,22 @@
+Item82. 스레드 안정성 수준을 문서화하라
+
+thread safety level를 명시할 것
+Immutable
+ - 인스턴스가 변하지 않는 경우, 예를 들어 String,Long,BigInteger
+ - 아무런 동기화과정이 필요 없음.
+Unconditionally thread-safe
+ - 인스턴스는 mutable이지만 외부적 동기화 없이 병렬로 사용될 수 있는 경우
+ - 예를 들어 AtomicLong, ConcurrentHashMap
+Conditionally thread-safe
+ - 몇몇 함수에만 외부적 동기화가 필요한 경우
+ - 예를 들어 Collections.synchronized wrapper에 의해 리턴되는 컬렉션
+ - 정확히 어떤 함수가 외부적 동기화를 필요로 하는지 명시해야 됨.
+Not thread-safe
+ - 인스턴스가 mutable이며, 모든 함수에서 외부적 동기화가 필요한 경우
+Thread-hostile
+ - 함수에 외부적 동기화를 처리하더라도 unsafe 한 경우
+ - 보통 동기화 없이 static data를 수정해서 발생
+
+모든 클래스는 분명하게 thread safety에 대해서 문서화할것
+Conditionally thread-safe 클래스들은 어느 함수 호출이 동기화가 필요하며 어떤 락을 획득해야하는지 명시해야함
+Unconditionally thread-safe 클래스들을 작성할때는 private final lock 객체를 사용하는것을 고려하라
